@@ -1,0 +1,550 @@
+name: Autograding Tests
+"on":
+  - push
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: TestNewIntSet
+        id: testnewintset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestNewIntSet
+          setup-command: ""
+          command: go test ./... -run ^TestNewIntSet$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetAdd
+        id: testintsetadd
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetAdd
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetAdd$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetAddMultiple
+        id: testintsetaddmultiple
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetAddMultiple
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetAddMultiple$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetAddExistenteNoRepite
+        id: testintsetaddexistentenorepite
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetAddExistenteNoRepite
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetAddExistenteNoRepite$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetContains
+        id: testintsetcontains
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetContains
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetContains$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetRemove
+        id: testintsetremove
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetRemove
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetRemove$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetRemoveNonExistent
+        id: testintsetremovenonexistent
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetRemoveNonExistent
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetRemoveNonExistent$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetSize
+        id: testintsetsize
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetSize
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetSize$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetValuesOnAnEmptySet
+        id: testintsetvaluesonanemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetValuesOnAnEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetValuesOnAnEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestIntSetValuesOnANonEmptySet
+        id: testintsetvaluesonanonemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntSetValuesOnANonEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestIntSetValuesOnANonEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestUnion
+        id: testunion
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestUnion
+          setup-command: ""
+          command: go test ./... -run ^TestUnion$
+          timeout: 10
+          max-score: 1
+      - name: TestIntersection
+        id: testintersection
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestIntersection
+          setup-command: ""
+          command: go test ./... -run ^TestIntersection$
+          timeout: 10
+          max-score: 1
+      - name: TestDifference
+        id: testdifference
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestDifference
+          setup-command: ""
+          command: go test ./... -run ^TestDifference$
+          timeout: 10
+          max-score: 1
+      - name: TestSymmetricDifference
+        id: testsymmetricdifference
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSymmetricDifference
+          setup-command: ""
+          command: go test ./... -run ^TestSymmetricDifference$
+          timeout: 10
+          max-score: 1
+      - name: TestEqual
+        id: testequal
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestEqual
+          setup-command: ""
+          command: go test ./... -run ^TestEqual$
+          timeout: 10
+          max-score: 1
+      - name: TestSubset
+        id: testsubset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSubset
+          setup-command: ""
+          command: go test ./... -run ^TestSubset$
+          timeout: 10
+          max-score: 1
+      - name: TestSuperset
+        id: testsuperset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSuperset
+          setup-command: ""
+          command: go test ./... -run ^TestSuperset$
+          timeout: 10
+          max-score: 1
+      - name: TestNewListSet
+        id: testnewlistset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestNewListSet
+          setup-command: ""
+          command: go test ./... -run ^TestNewListSet$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetAdd
+        id: testlistsetadd
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetAdd
+          setup-command: ""
+          command: go test ./... -run ^TestListSetAdd$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetAddMultiple
+        id: testlistsetaddmultiple
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetAddMultiple
+          setup-command: ""
+          command: go test ./... -run ^TestListSetAddMultiple$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetAddExistenteNoRepite
+        id: testlistsetaddexistentenorepite
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetAddExistenteNoRepite
+          setup-command: ""
+          command: go test ./... -run ^TestListSetAddExistenteNoRepite$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetContains
+        id: testlistsetcontains
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetContains
+          setup-command: ""
+          command: go test ./... -run ^TestListSetContains$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetRemove
+        id: testlistsetremove
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetRemove
+          setup-command: ""
+          command: go test ./... -run ^TestListSetRemove$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetRemoveNonExistent
+        id: testlistsetremovenonexistent
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetRemoveNonExistent
+          setup-command: ""
+          command: go test ./... -run ^TestListSetRemoveNonExistent$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetSize
+        id: testlistsetsize
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetSize
+          setup-command: ""
+          command: go test ./... -run ^TestListSetSize$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetValuesOnAnEmptySet
+        id: testlistsetvaluesonanemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetValuesOnAnEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestListSetValuesOnAnEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetValuesOnANonEmptySet
+        id: testlistsetvaluesonanonemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetValuesOnANonEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestListSetValuesOnANonEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetStringEnSetVacio
+        id: testlistsetstringensetvacio
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetStringEnSetVacio
+          setup-command: ""
+          command: go test ./... -run ^TestListSetStringEnSetVacio$
+          timeout: 10
+          max-score: 1
+      - name: TestListSetStringEnSetNoVacio
+        id: testlistsetstringensetnovacio
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestListSetStringEnSetNoVacio
+          setup-command: ""
+          command: go test ./... -run ^TestListSetStringEnSetNoVacio$
+          timeout: 10
+          max-score: 1
+      - name: TestNewMapSet
+        id: testnewmapset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestNewMapSet
+          setup-command: ""
+          command: go test ./... -run ^TestNewMapSet$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetAdd
+        id: testmapsetadd
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetAdd
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetAdd$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetAddMultiple
+        id: testmapsetaddmultiple
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetAddMultiple
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetAddMultiple$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetAddExistenteNoRepite
+        id: testmapsetaddexistentenorepite
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetAddExistenteNoRepite
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetAddExistenteNoRepite$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetContains
+        id: testmapsetcontains
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetContains
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetContains$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetRemove
+        id: testmapsetremove
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetRemove
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetRemove$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetRemoveNonExistent
+        id: testmapsetremovenonexistent
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetRemoveNonExistent
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetRemoveNonExistent$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetSize
+        id: testmapsetsize
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetSize
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetSize$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetValuesOnAnEmptySet
+        id: testmapsetvaluesonanemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetValuesOnAnEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetValuesOnAnEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetValuesOnANonEmptySet
+        id: testmapsetvaluesonanonemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetValuesOnANonEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetValuesOnANonEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetStringEnSetVacio
+        id: testmapsetstringensetvacio
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetStringEnSetVacio
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetStringEnSetVacio$
+          timeout: 10
+          max-score: 1
+      - name: TestMapSetStringEnSetNoVacio
+        id: testmapsetstringensetnovacio
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestMapSetStringEnSetNoVacio
+          setup-command: ""
+          command: go test ./... -run ^TestMapSetStringEnSetNoVacio$
+          timeout: 10
+          max-score: 1
+      - name: TestNewSet
+        id: testnewset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestNewSet
+          setup-command: ""
+          command: go test ./... -run ^TestNewSet$
+          timeout: 10
+          max-score: 1
+      - name: TestSetAdd
+        id: testsetadd
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetAdd
+          setup-command: ""
+          command: go test ./... -run ^TestSetAdd$
+          timeout: 10
+          max-score: 1
+      - name: TestSetAddMultiple
+        id: testsetaddmultiple
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetAddMultiple
+          setup-command: ""
+          command: go test ./... -run ^TestSetAddMultiple$
+          timeout: 10
+          max-score: 1
+      - name: TestSetAddExistenteNoRepite
+        id: testsetaddexistentenorepite
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetAddExistenteNoRepite
+          setup-command: ""
+          command: go test ./... -run ^TestSetAddExistenteNoRepite$
+          timeout: 10
+          max-score: 1
+      - name: TestSetContains
+        id: testsetcontains
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetContains
+          setup-command: ""
+          command: go test ./... -run ^TestSetContains$
+          timeout: 10
+          max-score: 1
+      - name: TestSetRemove
+        id: testsetremove
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetRemove
+          setup-command: ""
+          command: go test ./... -run ^TestSetRemove$
+          timeout: 10
+          max-score: 1
+      - name: TestSetRemoveNonExistent
+        id: testsetremovenonexistent
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetRemoveNonExistent
+          setup-command: ""
+          command: go test ./... -run ^TestSetRemoveNonExistent$
+          timeout: 10
+          max-score: 1
+      - name: TestSetSize
+        id: testsetsize
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetSize
+          setup-command: ""
+          command: go test ./... -run ^TestSetSize$
+          timeout: 10
+          max-score: 1
+      - name: TestSetValuesOnAnEmptySet
+        id: testsetvaluesonanemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetValuesOnAnEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestSetValuesOnAnEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestSetValuesOnANonEmptySet
+        id: testsetvaluesonanonemptyset
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetValuesOnANonEmptySet
+          setup-command: ""
+          command: go test ./... -run ^TestSetValuesOnANonEmptySet$
+          timeout: 10
+          max-score: 1
+      - name: TestSetStringEnSetVacio
+        id: testsetstringensetvacio
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetStringEnSetVacio
+          setup-command: ""
+          command: go test ./... -run ^TestSetStringEnSetVacio$
+          timeout: 10
+          max-score: 1
+      - name: TestSetStringEnSetNoVacio
+        id: testsetstringensetnovacio
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: TestSetStringEnSetNoVacio
+          setup-command: ""
+          command: go test ./... -run ^TestSetStringEnSetNoVacio$
+          timeout: 10
+          max-score: 1
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          TESTNEWINTSET_RESULTS: ${{steps.testnewintset.outputs.result}}
+          TESTINTSETADD_RESULTS: ${{steps.testintsetadd.outputs.result}}
+          TESTINTSETADDMULTIPLE_RESULTS: ${{steps.testintsetaddmultiple.outputs.result}}
+          TESTINTSETADDEXISTENTENOREPITE_RESULTS: ${{steps.testintsetaddexistentenorepite.outputs.result}}
+          TESTINTSETCONTAINS_RESULTS: ${{steps.testintsetcontains.outputs.result}}
+          TESTINTSETREMOVE_RESULTS: ${{steps.testintsetremove.outputs.result}}
+          TESTINTSETREMOVENONEXISTENT_RESULTS: ${{steps.testintsetremovenonexistent.outputs.result}}
+          TESTINTSETSIZE_RESULTS: ${{steps.testintsetsize.outputs.result}}
+          TESTINTSETVALUESONANEMPTYSET_RESULTS: ${{steps.testintsetvaluesonanemptyset.outputs.result}}
+          TESTINTSETVALUESONANONEMPTYSET_RESULTS: ${{steps.testintsetvaluesonanonemptyset.outputs.result}}
+          TESTUNION_RESULTS: ${{steps.testunion.outputs.result}}
+          TESTINTERSECTION_RESULTS: ${{steps.testintersection.outputs.result}}
+          TESTDIFFERENCE_RESULTS: ${{steps.testdifference.outputs.result}}
+          TESTSYMMETRICDIFFERENCE_RESULTS: ${{steps.testsymmetricdifference.outputs.result}}
+          TESTEQUAL_RESULTS: ${{steps.testequal.outputs.result}}
+          TESTSUBSET_RESULTS: ${{steps.testsubset.outputs.result}}
+          TESTSUPERSET_RESULTS: ${{steps.testsuperset.outputs.result}}
+          TESTNEWLISTSET_RESULTS: ${{steps.testnewlistset.outputs.result}}
+          TESTLISTSETADD_RESULTS: ${{steps.testlistsetadd.outputs.result}}
+          TESTLISTSETADDMULTIPLE_RESULTS: ${{steps.testlistsetaddmultiple.outputs.result}}
+          TESTLISTSETADDEXISTENTENOREPITE_RESULTS: ${{steps.testlistsetaddexistentenorepite.outputs.result}}
+          TESTLISTSETCONTAINS_RESULTS: ${{steps.testlistsetcontains.outputs.result}}
+          TESTLISTSETREMOVE_RESULTS: ${{steps.testlistsetremove.outputs.result}}
+          TESTLISTSETREMOVENONEXISTENT_RESULTS: ${{steps.testlistsetremovenonexistent.outputs.result}}
+          TESTLISTSETSIZE_RESULTS: ${{steps.testlistsetsize.outputs.result}}
+          TESTLISTSETVALUESONANEMPTYSET_RESULTS: ${{steps.testlistsetvaluesonanemptyset.outputs.result}}
+          TESTLISTSETVALUESONANONEMPTYSET_RESULTS: ${{steps.testlistsetvaluesonanonemptyset.outputs.result}}
+          TESTLISTSETSTRINGENSETVACIO_RESULTS: ${{steps.testlistsetstringensetvacio.outputs.result}}
+          TESTLISTSETSTRINGENSETNOVACIO_RESULTS: ${{steps.testlistsetstringensetnovacio.outputs.result}}
+          TESTNEWMAPSET_RESULTS: ${{steps.testnewmapset.outputs.result}}
+          TESTMAPSETADD_RESULTS: ${{steps.testmapsetadd.outputs.result}}
+          TESTMAPSETADDMULTIPLE_RESULTS: ${{steps.testmapsetaddmultiple.outputs.result}}
+          TESTMAPSETADDEXISTENTENOREPITE_RESULTS: ${{steps.testmapsetaddexistentenorepite.outputs.result}}
+          TESTMAPSETCONTAINS_RESULTS: ${{steps.testmapsetcontains.outputs.result}}
+          TESTMAPSETREMOVE_RESULTS: ${{steps.testmapsetremove.outputs.result}}
+          TESTMAPSETREMOVENONEXISTENT_RESULTS: ${{steps.testmapsetremovenonexistent.outputs.result}}
+          TESTMAPSETSIZE_RESULTS: ${{steps.testmapsetsize.outputs.result}}
+          TESTMAPSETVALUESONANEMPTYSET_RESULTS: ${{steps.testmapsetvaluesonanemptyset.outputs.result}}
+          TESTMAPSETVALUESONANONEMPTYSET_RESULTS: ${{steps.testmapsetvaluesonanonemptyset.outputs.result}}
+          TESTMAPSETSTRINGENSETVACIO_RESULTS: ${{steps.testmapsetstringensetvacio.outputs.result}}
+          TESTMAPSETSTRINGENSETNOVACIO_RESULTS: ${{steps.testmapsetstringensetnovacio.outputs.result}}
+          TESTNEWSET_RESULTS: ${{steps.testnewset.outputs.result}}
+          TESTSETADD_RESULTS: ${{steps.testsetadd.outputs.result}}
+          TESTSETADDMULTIPLE_RESULTS: ${{steps.testsetaddmultiple.outputs.result}}
+          TESTSETADDEXISTENTENOREPITE_RESULTS: ${{steps.testsetaddexistentenorepite.outputs.result}}
+          TESTSETCONTAINS_RESULTS: ${{steps.testsetcontains.outputs.result}}
+          TESTSETREMOVE_RESULTS: ${{steps.testsetremove.outputs.result}}
+          TESTSETREMOVENONEXISTENT_RESULTS: ${{steps.testsetremovenonexistent.outputs.result}}
+          TESTSETSIZE_RESULTS: ${{steps.testsetsize.outputs.result}}
+          TESTSETVALUESONANEMPTYSET_RESULTS: ${{steps.testsetvaluesonanemptyset.outputs.result}}
+          TESTSETVALUESONANONEMPTYSET_RESULTS: ${{steps.testsetvaluesonanonemptyset.outputs.result}}
+          TESTSETSTRINGENSETVACIO_RESULTS: ${{steps.testsetstringensetvacio.outputs.result}}
+          TESTSETSTRINGENSETNOVACIO_RESULTS: ${{steps.testsetstringensetnovacio.outputs.result}}
+        with:
+          runners: testnewintset,testintsetadd,testintsetaddmultiple,testintsetaddexistentenorepite,testintsetcontains,testintsetremove,testintsetremovenonexistent,testintsetsize,testintsetvaluesonanemptyset,testintsetvaluesonanonemptyset,testunion,testintersection,testdifference,testsymmetricdifference,testequal,testsubset,testsuperset,testnewlistset,testlistsetadd,testlistsetaddmultiple,testlistsetaddexistentenorepite,testlistsetcontains,testlistsetremove,testlistsetremovenonexistent,testlistsetsize,testlistsetvaluesonanemptyset,testlistsetvaluesonanonemptyset,testlistsetstringensetvacio,testlistsetstringensetnovacio,testnewmapset,testmapsetadd,testmapsetaddmultiple,testmapsetaddexistentenorepite,testmapsetcontains,testmapsetremove,testmapsetremovenonexistent,testmapsetsize,testmapsetvaluesonanemptyset,testmapsetvaluesonanonemptyset,testmapsetstringensetvacio,testmapsetstringensetnovacio,testnewset,testsetadd,testsetaddmultiple,testsetaddexistentenorepite,testsetcontains,testsetremove,testsetremovenonexistent,testsetsize,testsetvaluesonanemptyset,testsetvaluesonanonemptyset,testsetstringensetvacio,testsetstringensetnovacio
