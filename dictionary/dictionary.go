@@ -4,13 +4,13 @@ import (
 	"untref-ayp2/guia-conjuntos-hashes-diccionarios/hashtable"
 )
 
-type Dictionary[K comparable] struct {
-	hash *hashtable.HashTable[K, struct{}]
+type Dictionary[K comparable, V any] struct {
+	hash *hashtable.HashTable[K, V]
 }
 
-func NewDictionary[K comparable](hashFunc func(key K) uint) *Dictionary[K] {
-	return &Dictionary[K]{
-		hash: hashtable.NewHashTable[K, struct{}](0, 0, hashFunc),
+func NewDictionary[K comparable, V any](hashFunc func(key K) uint) *Dictionary[K, V] {
+	return &Dictionary[K, V]{
+		hash: hashtable.NewHashTable[K, V](0, 0, hashFunc),
 	}
 }
 
