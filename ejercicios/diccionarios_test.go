@@ -2,7 +2,7 @@ package ejercicios
 
 import (
 	"testing"
-	"untref-ayp2/guia-conjuntos-hashes-diccionarios/dictionary"
+	"github.com/untref-ayp2/data-structures/dictionary"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -27,21 +27,55 @@ func TestFrecuencia(t *testing.T) {
 	dict := Frecuencia("ahora")
 	require.NotNil(t, dict)
 	assert.Equal(t, 4, dict.Size())
-	assert.Equal(t, 2, dict.Get("a"))
-	assert.Equal(t, 1, dict.Get("h"))
-	assert.Equal(t, 1, dict.Get("o"))
-	assert.Equal(t, 1, dict.Get("r"))
+	val, err := dict.Get("a")
+	require.NoError(t, err)
+	assert.Equal(t, 2, val)
+
+	val, err = dict.Get("h")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
+
+	val, err = dict.Get("o")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
+
+	val, err = dict.Get("r")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
 
 	dict = Frecuencia("hoy es lunes")
 	assert.Equal(t, 8, dict.Size())
-	assert.Equal(t, 1, dict.Get("h"))
-	assert.Equal(t, 1, dict.Get("o"))
-	assert.Equal(t, 1, dict.Get("y"))
-	assert.Equal(t, 2, dict.Get("e"))
-	assert.Equal(t, 2, dict.Get("s"))
-	assert.Equal(t, 1, dict.Get("l"))
-	assert.Equal(t, 1, dict.Get("u"))
-	assert.Equal(t, 1, dict.Get("n"))
+	val, err = dict.Get("h")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
+
+	val, err = dict.Get("o")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
+
+	val, err = dict.Get("y")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
+
+	val, err = dict.Get("e")
+	require.NoError(t, err)
+	assert.Equal(t, 2, val)
+
+	val, err = dict.Get("s")
+	require.NoError(t, err)
+	assert.Equal(t, 2, val)
+
+	val, err = dict.Get("l")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
+
+	val, err = dict.Get("u")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
+
+	val, err = dict.Get("n")
+	require.NoError(t, err)
+	assert.Equal(t, 1, val)
 
 }
 
@@ -76,6 +110,8 @@ func TestInformacionSolicitada(t *testing.T) {
 	entrada.Put("Vie 12", sl2)
 	salida := InformacionSolicitada(*entrada)
 	require.NotNil(t, salida)
-	assert.ElementsMatch(t, []string{"Mie 10"}, salida.Get("Pedro"))
-	assert.ElementsMatch(t, []string{"Mie 10", "Vie 12"}, salida.Get("Ana"))
+	valPedro, _ := salida.Get("Pedro")
+	assert.ElementsMatch(t, []string{"Mie 10"}, valPedro)
+	valAna, _ := salida.Get("Ana")
+	assert.ElementsMatch(t, []string{"Mie 10", "Vie 12"}, valAna)
 }
