@@ -9,7 +9,7 @@ type Dictionary[K comparable, V any] struct {
 }
 
 func NewDictionary[K comparable, V any](hashFunc func(key K) uint) *Dictionary[K, V] {
-	
+
 }
 
 func (d *Dictionary[K, V]) Set(key K, value V) {
@@ -38,4 +38,3 @@ func (d *Dictionary[K, V]) IsEmpty() bool {
 
 func (d *Dictionary[K, V]) Clear() {
 }
-

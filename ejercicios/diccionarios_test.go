@@ -2,6 +2,7 @@ package ejercicios
 
 import (
 	"testing"
+
 	"github.com/untref-ayp2/data-structures/dictionary"
 
 	"github.com/stretchr/testify/assert"
