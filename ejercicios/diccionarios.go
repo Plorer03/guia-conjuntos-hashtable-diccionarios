@@ -1,7 +1,7 @@
 package ejercicios
 
 import (
-	"github.com/untref-ayp2/data-structures/dictionary"
+	"untref-ayp2/guia-conjuntos-hashes-diccionarios/dictionary"
 	"untref-ayp2/guia-conjuntos-hashes-diccionarios/list"
 )
 
