@@ -2,15 +2,14 @@ package ejercicios
 
 import (
 	"testing"
-
-	"github.com/untref-ayp2/data-structures/dictionary"
+	"untref-ayp2/guia-conjuntos-hashes-diccionarios/dictionary"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
 func TestTraducir(t *testing.T) {
-	dic := dictionary.NewDictionary[string, string]()
+	dic := dictionary.NewDictionary[string, string](hashFn)
 	dic.Put("Dungeons", "Calabozos")
 	dic.Put("Dragons", "Dragones")
 
@@ -28,54 +27,54 @@ func TestFrecuencia(t *testing.T) {
 	dict := Frecuencia("ahora")
 	require.NotNil(t, dict)
 	assert.Equal(t, 4, dict.Size())
-	val, err := dict.Get("a")
-	require.NoError(t, err)
+	val := dict.Get("a")
+
 	assert.Equal(t, 2, val)
 
-	val, err = dict.Get("h")
-	require.NoError(t, err)
+	val = dict.Get("h")
+
 	assert.Equal(t, 1, val)
 
-	val, err = dict.Get("o")
-	require.NoError(t, err)
+	val = dict.Get("o")
+
 	assert.Equal(t, 1, val)
 
-	val, err = dict.Get("r")
-	require.NoError(t, err)
+	val = dict.Get("r")
+
 	assert.Equal(t, 1, val)
 
 	dict = Frecuencia("hoy es lunes")
 	assert.Equal(t, 8, dict.Size())
-	val, err = dict.Get("h")
-	require.NoError(t, err)
+	val = dict.Get("h")
+
 	assert.Equal(t, 1, val)
 
-	val, err = dict.Get("o")
-	require.NoError(t, err)
+	val = dict.Get("o")
+
 	assert.Equal(t, 1, val)
 
-	val, err = dict.Get("y")
-	require.NoError(t, err)
+	val = dict.Get("y")
+
 	assert.Equal(t, 1, val)
 
-	val, err = dict.Get("e")
-	require.NoError(t, err)
+	val = dict.Get("e")
+
 	assert.Equal(t, 2, val)
 
-	val, err = dict.Get("s")
-	require.NoError(t, err)
+	val = dict.Get("s")
+
 	assert.Equal(t, 2, val)
 
-	val, err = dict.Get("l")
-	require.NoError(t, err)
+	val = dict.Get("l")
+
 	assert.Equal(t, 1, val)
 
-	val, err = dict.Get("u")
-	require.NoError(t, err)
+	val = dict.Get("u")
+
 	assert.Equal(t, 1, val)
 
-	val, err = dict.Get("n")
-	require.NoError(t, err)
+	val = dict.Get("n")
+
 	assert.Equal(t, 1, val)
 
 }
@@ -104,15 +103,15 @@ func TestInterseccion(t *testing.T) {
 	assert.Equal(t, 0, list.Size())
 }
 func TestInformacionSolicitada(t *testing.T) {
-	entrada := dictionary.NewDictionary[string, []string]()
+	entrada := dictionary.NewDictionary[string, []string](hashFn)
 	sl1 := []string{"Ana", "Pedro"}
 	sl2 := []string{"Ana"}
 	entrada.Put("Mie 10", sl1)
 	entrada.Put("Vie 12", sl2)
 	salida := InformacionSolicitada(*entrada)
 	require.NotNil(t, salida)
-	valPedro, _ := salida.Get("Pedro")
+	valPedro := salida.Get("Pedro")
 	assert.ElementsMatch(t, []string{"Mie 10"}, valPedro)
-	valAna, _ := salida.Get("Ana")
+	valAna := salida.Get("Ana")
 	assert.ElementsMatch(t, []string{"Mie 10", "Vie 12"}, valAna)
 }

@@ -4,7 +4,7 @@ type IntSet struct {
 	elements map[int]bool
 }
 
-func NewIntSet(elements ...int) *IntSet {
+func NewIntSet(elements ...int) *IntSet { //O(n)
 	s := &IntSet{elements: make(map[int]bool)}
 	for _, v := range elements {
 		s.Add(v)
@@ -12,23 +12,23 @@ func NewIntSet(elements ...int) *IntSet {
 	return s
 }
 
-func (s *IntSet) Add(element int) {
+func (s *IntSet) Add(element int) { //O(1)
 	s.elements[element] = true
 }
 
-func (s *IntSet) Remove(element int) {
+func (s *IntSet) Remove(element int) { //O(1)
 	delete(s.elements, element)
 }
 
-func (s *IntSet) Contains(element int) bool {
+func (s *IntSet) Contains(element int) bool { //O(1)
 	return s.elements[element]
 }
 
-func (s *IntSet) Size() int {
+func (s *IntSet) Size() int { //O(1)
 	return len(s.elements)
 }
 
-func (s *IntSet) Values() []int {
+func (s *IntSet) Values() []int { //O(n)
 	values := make([]int, 0, s.Size())
 	for k := range s.elements {
 		values = append(values, k)
@@ -106,12 +106,16 @@ func (s *IntSet) Equal(other *IntSet) bool {
 // El conjunto `other` es subconjunto de `s` si todos los elementos de `other`
 // están incluidos en `s`.
 func (s *IntSet) Subset(other *IntSet) bool {
-	for k := range other.elements {
-		if !s.Contains(k) {
-			return false
+	/*
+		for k := range other.elements {
+			if !s.Contains(k) {
+				return false
+			}
 		}
-	}
-	return true
+		return true
+	*/
+
+	return other.Equal(s.Intersection(other))
 }
 
 // El conjunto `other` es superconjunto de `s` si `other` contiene todos los
