@@ -47,11 +47,20 @@ func Frecuencia(texto string) *dictionary.Dictionary[string, int] {
 }
 
 func Interseccion(s1 []string, s2 []string) *list.LinkedList[string] {
-	//Implementar
-	return nil
+	list := list.NewLinkedList[string]()
+	dict := dictionary.NewDictionary[string, int](hashFn)
+	for _, v := range s1 {
+		dict.Put(v, 1)
+	}
+	for _, v := range s2 {
+		if dict.Contains(v) {
+			list.Append(v)
+		}
+	}
+
+	return list
 }
 
 func InformacionSolicitada(entrada dictionary.Dictionary[string, []string]) *dictionary.Dictionary[string, []string] {
-	//Implementar
 	return nil
 }

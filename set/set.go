@@ -87,6 +87,16 @@ func (s *Set[T]) Values() []T {
 	return nil
 }
 
+func (s *ListSet[T]) Intersection(other *ListSet[T]) *ListSet[T] {
+	newSet := NewListSet[T]()
+	for current := s.elements.Head(); current != nil; current = current.Next() {
+		if other.Contains(current.Data()) {
+			newSet.Add(current.Data())
+		}
+	}
+	return newSet
+}
+
 // String devuelve una representación en cadena del conjunto.
 //
 // Uso:

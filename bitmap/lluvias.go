@@ -38,41 +38,59 @@ func validaFecha(d uint8, m Mes) bool {
 
 // Lluvias es una estructura que representa la cantidad de lluvias caídas en un año
 type Lluvias struct {
-	// Implementar
+	meses [12]*BitMap
 }
 
 // NewLluvias crea un nuevo registro de lluvias
 func NewLluvias() *Lluvias {
 	// Implementar
-	return nil
+	var meses [12]*BitMap
+	for i := range 12 {
+		meses[i] = NewBitMap()
+	}
+	return &Lluvias{meses}
 }
 
 // Registrar lluvia registra un dia del año en que llovió
 // Si la fecha es inválida, no hace nada
 func (l *Lluvias) Registrar(d uint8, m Mes) {
-	// Implementar
+	if validaFecha(d, m) {
+		l.meses[m].On(d)
+	}
 }
 
 // Desregistrar lluvia desregistra un dia del año en que llovió
 func (l *Lluvias) Desregistrar(d uint8, m Mes) {
-	// Implementar
+	if validaFecha(d, m) {
+		l.meses[m].Off(d)
+	}
 }
 
 // Llovió devuelve si llovió en un día del año
 // Si la fecha es inválida, devuelve false
 func (l *Lluvias) Llovio(d uint8, m Mes) bool {
-	// Implementar
+	if validaFecha(d, m) {
+		isOn, _ := l.meses[m].IsOn(d)
+		return isOn
+	}
 	return false
 }
 
 // ListarMes lista los días en que llovió en un Mes
 func (l *Lluvias) ListarMes(m Mes) *set.ListSet[uint8] {
-	// Implementar
-	return nil
+	set := set.NewListSet[uint8]()
+	for i := range 32 {
+		isOn, _ := l.meses[m].IsOn(uint8(i))
+		if isOn {
+			set.Add(uint8(i))
+		}
+	}
+	return set
 }
 
 // Dado dos meses, listar los días que llovieron en ambos
 func (l *Lluvias) ListarDiasEnAmbosMeses(m1 Mes, m2 Mes) *set.ListSet[uint8] {
-	// Implementar
-	return nil
+	set1 := l.ListarMes(m1)
+	set2 := l.ListarMes(m2)
+	return set1.Intersection(set2)
 }
